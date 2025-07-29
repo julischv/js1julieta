@@ -1,33 +1,48 @@
+document.getElementById('healthSurvey').addEventListener('submit', function(event) {
+    event.preventDefault(); 
 
-function simulador() {
+  
+    const nombreApellido = document.getElementById('nombreApellido').value;
+    const edad = document.getElementById('edad').value;
+    const realizaDeporte = document.getElementById('realizaDeporte').value;
+    const trabajaComputadora = document.getElementById('trabajaComputadora').value;
+    const enfermedadPreexistente = document.getElementById('enfermedadPreexistente').value;
+    const enfermedadEspecifica = enfermedadPreexistente === "sí" ? document.getElementById('enfermedadEspecifica').value : "";
 
-    const nombreApellido = prompt("Por favor, ingresa tu nombre y apellido:");
+  
+    const datosUsuario = {
+        nombreApellido,
+        edad,
+        realizaDeporte,
+        trabajaComputadora,
+        enfermedadPreexistente,
+        enfermedadEspecifica
+    };
 
-    const edad = prompt("¿Cuál es tu edad?");
+ 
+    localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario));
+
+   
+    mostrarResultados(datosUsuario);
+});
 
 
-    const realizaDeporte = prompt("¿Realizas deporte? (sí/no)");
-
-
-    const trabajaComputadora = prompt("¿Trabajas con la computadora? (sí/no)");
-
-
-    const enfermedadPreexistente = prompt("¿Padeces alguna enfermedad preexistente? (sí/no)");
-
-    let enfermedadEspecifica = "";
-    if (enfermedadPreexistente.toLowerCase() === "sí") {
-        enfermedadEspecifica = prompt("¿Cuál es la enfermedad preexistente?");
-    }
-
-
-    console.log("Nombre y Apellido:", nombreApellido);
-    console.log("Edad:", edad);
-    console.log("Realiza Deporte:", realizaDeporte);
-    console.log("Trabaja con la Computadora:", trabajaComputadora);
-    console.log("Enfermedad Preexistente:", enfermedadPreexistente);
-    if (enfermedadEspecifica) {
-        console.log("Enfermedad Específica:", enfermedadEspecifica);
-    }
+function mostrarResultados(datos) {
+    const resultadosDiv = document.getElementById('resultados');
+    resultadosDiv.innerHTML = `
+        <h3>Resultados:</h3>
+        <p><strong>Nombre y Apellido:</strong> ${datos.nombreApellido}</p>
+        <p><strong>Edad:</strong> ${datos.edad}</p>
+        <p><strong>Realiza Deporte:</strong> ${datos.realizaDeporte}</p>
+        <p><strong>Trabaja con la Computadora:</strong> ${datos.trabajaComputadora}</p>
+        <p><strong>Enfermedad Preexistente:</strong> ${datos.enfermedadPreexistente}</p>
+        ${datos.enfermedadEspecifica ? `<p><strong>Enfermedad Específica:</strong> ${datos.enfermedadEspecifica}</p>` : ''}
+    `;
 }
 
-simulador();
+
+document.getElementById('enfermedadPreexistente').addEventListener('change', function() {
+    const container = document.getElementById('enfermedadEspecificaContainer');
+    container.style.display = this.value === 'sí' ? 'block' : 'none';
+});
+
