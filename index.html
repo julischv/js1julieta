@@ -11,9 +11,46 @@
     <div class="container main-container">
         <h1>Simulador de Salud</h1>
         <p class="description">Este simulador recopila información sobre tus hábitos y salud para brindarte recomendaciones personalizadas.</p>
-        <button id="startButton" class="btn btn-primary">Comenzar Encuesta de Salud</button>
+        
+        <form id="healthSurvey">
+            <div class="form-group">
+                <label for="nombreApellido">Nombre y Apellido:</label>
+                <input type="text" class="form-control" id="nombreApellido" required>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" class="form-control" id="edad" required>
+            </div>
+            <div class="form-group">
+                <label>¿Realizas deporte?</label>
+                <select class="form-control" id="realizaDeporte" required>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Trabajas con la computadora?</label>
+                <select class="form-control" id="trabajaComputadora" required>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Padeces alguna enfermedad preexistente?</label>
+                <select class="form-control" id="enfermedadPreexistente" required>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group" id="enfermedadEspecificaContainer" style="display:none;">
+                <label for="enfermedadEspecifica">¿Cuál es la enfermedad preexistente?</label>
+                <input type="text" class="form-control" id="enfermedadEspecifica">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        
+        <div id="resultados" class="mt-4"></div>
     </div>
-
     <script src="js/script.js"></script>
 </body>
 </html>
