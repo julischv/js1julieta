@@ -3,54 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Encuesta de Salud</title>
+    <link rel="stylesheet" href="./css/style.css">
+    
 </head>
 <body>
-    <div class="container main-container">
-        <h1>Simulador de Salud</h1>
-        <p class="description">Este simulador recopila información sobre tus hábitos y salud para brindarte recomendaciones personalizadas.</p>
-        
+    <div class="container">
+        <h1>Encuesta de Salud</h1>
         <form id="healthSurvey">
             <div class="form-group">
                 <label for="nombreApellido">Nombre y Apellido:</label>
-                <input type="text" class="form-control" id="nombreApellido" required>
+                <input type="text" id="nombreApellido" required>
             </div>
+            
             <div class="form-group">
                 <label for="edad">Edad:</label>
-                <input type="number" class="form-control" id="edad" required>
+                <input type="number" id="edad" min="1" max="120" required>
             </div>
+            
             <div class="form-group">
-                <label>¿Realizas deporte?</label>
-                <select class="form-control" id="realizaDeporte" required>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" required>
+                <div id="emailError" class="error hidden-field">Por favor ingrese un correo válido</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="direccion">Dirección (opcional):</label>
+                <input type="text" id="direccion">
+            </div>
+            
+            <div class="form-group">
+                <label for="realizaDeporte">¿Realiza deporte regularmente?</label>
+                <select id="realizaDeporte" required>
+                    <option value="">Seleccione una opción</option>
                     <option value="sí">Sí</option>
                     <option value="no">No</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label>¿Trabajas con la computadora?</label>
-                <select class="form-control" id="trabajaComputadora" required>
+                <label for="trabajaComputadora">¿Trabaja con la computadora?</label>
+                <select id="trabajaComputadora" required>
+                    <option value="">Seleccione una opción</option>
                     <option value="sí">Sí</option>
                     <option value="no">No</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label>¿Padeces alguna enfermedad preexistente?</label>
-                <select class="form-control" id="enfermedadPreexistente" required>
+                <label for="enfermedadPreexistente">¿Tiene alguna enfermedad preexistente?</label>
+                <select id="enfermedadPreexistente" required>
+                    <option value="">Seleccione una opción</option>
                     <option value="sí">Sí</option>
                     <option value="no">No</option>
                 </select>
             </div>
-            <div class="form-group" id="enfermedadEspecificaContainer" style="display:none;">
-                <label for="enfermedadEspecifica">¿Cuál es la enfermedad preexistente?</label>
-                <input type="text" class="form-control" id="enfermedadEspecifica">
+            
+            <div id="enfermedadEspecificaContainer" class="form-group">
+                <label for="enfermedadEspecifica">Especifique la enfermedad:</label>
+                <input type="text" id="enfermedadEspecifica">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+
+            <div id="computadoraDoloresContainer" class="form-group hidden-field">
+                <label>¿Ha tenido dolores de cabeza o cervicales en los últimos meses?</label>
+                <select id="doloresComputadora">
+                    <option value="">Seleccione una opción</option>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div id="deporteDetallesContainer" class="form-group hidden-field">
+                <label for="tipoDeporte">¿Qué deporte realiza?</label>
+                <input type="text" id="tipoDeporte">
+                
+                <label for="frecuenciaDeporte">¿Cuántas veces por semana?</label>
+                <input type="number" id="frecuenciaDeporte" min="1" max="7">
+                
+                <label>¿Ha tenido lesiones a repetición por ese deporte?</label>
+                <select id="lesionesDeporte">
+                    <option value="">Seleccione una opción</option>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div id="mayor65Container" class="form-group hidden-field">
+                <label>¿Ha tenido caídas en los últimos meses?</label>
+                <select id="caidas">
+                    <option value="">Seleccione una opción</option>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                
+                <label for="numeroCaidas">¿Cuántas caídas?</label>
+                <input type="number" id="numeroCaidas" min="0">
+                
+                <label>¿Tiene desconfianza o falta de equilibrio al caminar?</label>
+                <select id="equilibrio">
+                    <option value="">Seleccione una opción</option>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            
+            <button type="submit">Enviar Encuesta</button>
         </form>
         
-        <div id="resultados" class="mt-4"></div>
+        <div id="resultados"></div>
     </div>
-    <script src="js/script.js"></script>
+<script src="./js/script.js"></script>
 </body>
 </html>
