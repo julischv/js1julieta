@@ -5,13 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Carrito de Compras</h1>
         <div id="cartDetails"></div>
-        <button id="checkoutButton">Proceder al Pago</button>
+        <button id="checkoutButton" class="button">Proceder al Pago</button>
+
+        <!-- Formulario de pago -->
+        <div id="paymentForm" class="hidden">
+            <h2>Datos de Pago</h2>
+            <div class="form-group">
+                <label for="cardNumber">Número de Tarjeta</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="form-group">
+                <label for="cardExpiry">Fecha de Expiración (MM/AA)</label>
+                <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="form-group">
+                <label for="cardCvv">CVV</label>
+                <input type="text" id="cardCvv" placeholder="123" maxlength="3">
+            </div>
+            <div class="form-group">
+                <label for="cardName">Nombre en la Tarjeta</label>
+                <input type="text" id="cardName" placeholder="Juan Pérez">
+            </div>
+            <button id="confirmPayment" class="button">Confirmar Pago</button>
+        </div>
     </div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const plan = urlParams.get('plan');
@@ -25,9 +85,27 @@
         `;
 
         document.getElementById('checkoutButton').addEventListener('click', function() {
-            alert('Procediendo al pago...');
-            
+            document.getElementById('paymentForm').classList.remove('hidden');
+        });
+
+        document.getElementById('confirmPayment').addEventListener('click', function() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardExpiry = document.getElementById('cardExpiry').value;
+            const cardCvv = document.getElementById('cardCvv').value;
+            const cardName = document.getElementById('cardName').value;
+
+            // Validación básica
+            if (!cardNumber || !cardExpiry || !cardCvv || !cardName) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            // Simulación de procesamiento de pago
+            alert("Pago procesado exitosamente. ¡Gracias por tu compra!");
+            // Aquí puedes redirigir a una página de confirmación o limpiar el carrito
+             window.location.href = 'https://julischv.github.io/js1julieta/pages/confirmacion.html';
         });
     </script>
 </body>
 </html>
+

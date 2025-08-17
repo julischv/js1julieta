@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Pago Exitoso! | TuPlanSalud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --text: #333;
+            --text-light: #666;
+            --bg: #f8f9fa;
+            --card-bg: #fff;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #e8f5e9;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 48px;
+            border: 4px solid var(--primary);
+        }
+        
+        h1 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .order-details {
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f44336;
+            border-radius: 50%;
+            animation: confetti 5s ease-in-out infinite;
+        }
+        
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .success-container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">✓</div>
+        <h1>¡Pago Completado con Éxito!</h1>
+        <p>Gracias por tu compra. Hemos enviado los detalles de tu pedido a tu correo electrónico.</p>
+        
+        <div class="order-details">
+            <div class="order-item">
+                <span>Número de pedido:</span>
+                <strong id="order-number">ORD-2023-78945612</strong>
+            </div>
+            <div class="order-item">
+                <span>Plan adquirido:</span>
+                <strong id="plan-name">Plan Premium (3 meses)</strong>
+            </div>
+            <div class="order-item">
+                <span>Fecha:</span>
+                <strong id="order-date">29 de Noviembre, 2023</strong>
+            </div>
+            <div class="order-item">
+                <span>Monto total:</span>
+                <strong id="order-amount">$39.98 USD</strong>
+            </div>
+            <div class="order-item">
+                <span>Método de pago:</span>
+                <strong id="payment-method">Visa terminada en 4242</strong>
+            </div>
+        </div>
+        
+        <p>Ahora tienes acceso completo a tu plan. Podrás comenzar inmediatamente.</p>
+        <a href="../index.html" class="btn">Volver al Inicio</a>
+        
+        <!-- Confetti animation -->
+        <div class="confetti" style="left:10%; animation-delay:0;"></div>
+        <div class="confetti" style="left:20%; animation-delay:0.5s;"></div>
+        <div class="confetti" style="left:30%; animation-delay:1s;"></div>
+        <div class="confetti" style="left:40%; animation-delay:0.2s;"></div>
+        <div class="confetti" style="left:50%; animation-delay:0.8s;"></div>
+        <div class="confetti" style="left:60%; animation-delay:0.1s;"></div>
+        <div class="confetti" style="left:70%; animation-delay:0.6s;"></div>
+        <div class="confetti" style="left:80%; animation-delay:0.3s;"></div>
+        <div class="confetti" style="left:90%; animation-delay:0.7s;"></div>
+    </div>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan') || 'Plan Premium';
+        const duration = urlParams.get('duration') || '3';
+        
+        // Configurar datos del pedido
+        document.getElementById('plan-name').textContent = `${plan} (${duration} meses)`;
+        document.getElementById('order-amount').textContent = `$${duration === '3' ? '39.98' : '19.99'} USD`;
+        
+        // Generar número de pedido aleatorio
+        const orderNumber = `ORD-${new Date().getFullYear()}-${Math.floor(Math.random() * 100000000)}`;
+        document.getElementById('order-number').textContent = orderNumber;
+        
+        // Establecer fecha actual
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date().toLocaleDateString('es-ES', options);
+        document.getElementById('order-date').textContent = today;
+    </script>
+</body>
+</html>
