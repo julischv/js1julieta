@@ -18,7 +18,9 @@ document.getElementById('healthSurvey').addEventListener('submit', function(even
     if (validarDatos(datosUsuario)) {
         encuestas.push(datosUsuario);
         localStorage.setItem('encuestas', JSON.stringify(encuestas));
-        mostrarResultados(datosUsuario);
+        
+        // Redirigir según la edad y las respuestas
+        redirigirUsuario(datosUsuario);
     } else {
         alert("Por favor, completa todos los campos requeridos.");
     }
@@ -75,7 +77,20 @@ function validarDatos(datos) {
            datos.enfermedadPreexistente;
 }
 
-// Función para mostrar resultados
+// Función para redirigir al usuario según sus respuestas
+function redirigirUsuario(datos) {
+    if (datos.edad > 65) {
+        window.location.href = 'rutas/pages_adultosmayores.html'; 
+    } else if (datos.trabajaComputadora === "sí") {
+        window.location.href = 'rutas/pages_trabajoencasa.html'; 
+    } else if (datos.realizaDeporte === "sí") {
+        window.location.href = 'rutas/pages_deportistas.html'; 
+    } else {
+        alert("No se ha seleccionado una opción válida para redirigir.");
+    }
+}
+
+// Funciones para mostrar resultados
 function mostrarResultados(datos) {
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = `
@@ -142,3 +157,4 @@ window.addEventListener('load', function() {
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = `<p>Encuestas registradas: ${encuestas.length}</p>`;
 });
+
