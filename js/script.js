@@ -5,13 +5,12 @@ let encuestas = JSON.parse(localStorage.getItem('encuestas')) || [];
 document.getElementById('healthSurvey').addEventListener('submit', function(event) {
     event.preventDefault(); 
     
-    // Validar email primero
     const email = document.getElementById('email').value;
     if (!validarEmail(email)) {
-        document.getElementById('emailError').classList.remove('hidden-field');
+        mostrarError('emailError');
         return;
     } else {
-        document.getElementById('emailError').classList.add('hidden-field');
+        ocultarError('emailError');
     }
     
     const datosUsuario = obtenerDatosUsuario();
@@ -33,9 +32,10 @@ function validarEmail(email) {
 
 // Función para obtener los datos del usuario
 function obtenerDatosUsuario() {
+    const edad = parseInt(document.getElementById('edad').value);
     return {
         nombreApellido: document.getElementById('nombreApellido').value,
-        edad: document.getElementById('edad').value,
+        edad: edad,
         email: document.getElementById('email').value,
         telefono: document.getElementById('telefono').value,
         direccion: document.getElementById('direccion').value || 'No proporcionada',
@@ -57,15 +57,9 @@ function obtenerDatosUsuario() {
         lesionesDeporte: document.getElementById('realizaDeporte').value === "sí" 
                             ? document.getElementById('lesionesDeporte').value 
                             : "No aplica",
-        caidas: parseInt(document.getElementById('edad').value) > 65 
-                            ? document.getElementById('caidas').value 
-                            : "No aplica",
-        numeroCaidas: parseInt(document.getElementById('edad').value) > 65 
-                            ? document.getElementById('numeroCaidas').value 
-                            : "0",
-        equilibrio: parseInt(document.getElementById('edad').value) > 65 
-                            ? document.getElementById('equilibrio').value 
-                            : "No aplica",
+        caidas: edad > 65 ? document.getElementById('caidas').value : "No aplica",
+        numeroCaidas: edad > 65 ? document.getElementById('numeroCaidas').value : "0",
+        equilibrio: edad > 65 ? document.getElementById('equilibrio').value : "No aplica",
         fechaEncuesta: new Date().toLocaleString()
     };
 }
@@ -81,7 +75,7 @@ function validarDatos(datos) {
            datos.enfermedadPreexistente;
 }
 
-// Función para mostrar los resultados
+// Función para mostrar resultados
 function mostrarResultados(datos) {
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = `
@@ -102,7 +96,7 @@ function mostrarResultados(datos) {
         ` : ''}
         <p><strong>Enfermedad Específica:</strong> ${datos.enfermedadEspecifica}</p>
         <p><strong>Fecha de la encuesta:</strong> ${datos.fechaEncuesta}</p>
-        ${parseInt(datos.edad) > 65 ? `
+        ${datos.edad > 65 ? `
             <p><strong>Caídas recientes:</strong> ${datos.caidas}</p>
             <p><strong>Número de caídas:</strong> ${datos.numeroCaidas}</p>
             <p><strong>Problemas de equilibrio:</strong> ${datos.equilibrio}</p>
@@ -110,6 +104,15 @@ function mostrarResultados(datos) {
         <hr>
         <h4>Total de encuestas almacenadas: ${encuestas.length}</h4>
     `;
+}
+
+// Funciones para mostrar y ocultar errores
+function mostrarError(id) {
+    document.getElementById(id).classList.remove('hidden-field');
+}
+
+function ocultarError(id) {
+    document.getElementById(id).classList.add('hidden-field');
 }
 
 // Maneja el cambio en los campos condicionales
@@ -139,5 +142,3 @@ window.addEventListener('load', function() {
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = `<p>Encuestas registradas: ${encuestas.length}</p>`;
 });
-
-
