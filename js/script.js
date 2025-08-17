@@ -80,11 +80,11 @@ function validarDatos(datos) {
 // Función para redirigir al usuario según sus respuestas
 function redirigirUsuario(datos) {
     if (datos.edad > 65) {
-        window.location.href = 'rutas/pages_adultosmayores.html'; 
+        window.location.href = '/rutas/pages/adultosmayores.html'; 
     } else if (datos.trabajaComputadora === "sí") {
-        window.location.href = 'rutas/pages_trabajoencasa.html'; 
+        window.location.href = 'rutas/pages/trabajoencasa.html'; 
     } else if (datos.realizaDeporte === "sí") {
-        window.location.href = 'rutas/pages_deportistas.html'; 
+        window.location.href = 'rutas/pages/deportistas.html'; 
     } else {
         alert("No se ha seleccionado una opción válida para redirigir.");
     }
