@@ -80,7 +80,7 @@ function validarDatos(datos) {
 // Función para redirigir al usuario según sus respuestas
 function redirigirUsuario(datos) {
     if (datos.edad > 65) {
-        window.location.href = '/rutas/pages/adultosmayores.html'; 
+        window.location.href = 'rutas/pages/adultosmayores.html'; 
     } else if (datos.trabajaComputadora === "sí") {
         window.location.href = 'rutas/pages/trabajoencasa.html'; 
     } else if (datos.realizaDeporte === "sí") {
