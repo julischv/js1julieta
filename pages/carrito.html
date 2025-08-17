@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Carrito de Compras</h1>
+        <div id="cartDetails"></div>
+        <button id="checkoutButton">Proceder al Pago</button>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        const duration = urlParams.get('duration');
+        
+        const cartDetails = document.getElementById('cartDetails');
+        cartDetails.innerHTML = `
+            <p>Plan seleccionado: ${plan}</p>
+            <p>Duración: ${duration} mes(es)</p>
+            <p>Total: $${duration === '3' ? '39.98' : '19.99'}</p>
+        `;
+
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            alert('Procediendo al pago...');
+            // Aquí puedes agregar la lógica para el proceso de pago
+        });
+    </script>
+</body>
+</html>

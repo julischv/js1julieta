@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Ejercicios para Trabajadores de Computadora</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Plan de Ejercicios para Trabajadores de Computadora</h1>
+        <p>Ofrecemos un plan de ejercicios y atención para aquellos que pasan mucho tiempo frente a la computadora.</p>
+        <p>Precio: $19.99/mes</p>
+        <p>Promoción: Paga 2 meses y obtén 1 mes gratis.</p>
+        
+        <form id="purchaseForm">
+            <label for="duration">Selecciona la duración:</label>
+            <select id="duration" required>
+                <option value="1">1 mes - $19.99</option>
+                <option value="3">3 meses - $39.98 (paga 2 meses)</option>
+            </select>
+            <button type="submit">Comprar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('purchaseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const duration = document.getElementById('duration').value;
+            // Redirigir al carrito de compras
+            window.location.href = `carrito.html?plan=computadora&duration=${duration}`;
+        });
+    </script>
+</body>
+</html>
