@@ -1,0 +1,19 @@
+{
+    "planes": [
+        {
+            "nombre": "Plan de Movilidad para Adultos Mayores",
+            "precio": 19.99,
+            "promocion": "Paga 2 meses y obtén 1 mes gratis."
+        },
+        {
+            "nombre": "Plan de Ejercicios para Deportistas",
+            "precio": 19.99,
+            "promocion": "Paga 2 meses y obtén 1 mes gratis."
+        },
+        {
+            "nombre": "Plan de Ejercicios para Trabajadores de Computadora",
+            "precio": 19.99,
+            "promocion": "Paga 2 meses y obtén 1 mes gratis."
+        }
+    ]
+}
