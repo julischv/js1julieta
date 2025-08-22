@@ -7,10 +7,8 @@ document.getElementById('healthSurvey').addEventListener('submit', function(even
     
     const email = document.getElementById('email').value;
     if (!validarEmail(email)) {
-        mostrarError('emailError');
+        mostrarError('Por favor ingrese un correo válido');
         return;
-    } else {
-        ocultarError('emailError');
     }
     
     const datosUsuario = obtenerDatosUsuario();
@@ -22,7 +20,7 @@ document.getElementById('healthSurvey').addEventListener('submit', function(even
         // Redirigir según la edad y las respuestas
         redirigirUsuario(datosUsuario);
     } else {
-        alert("Por favor, completa todos los campos requeridos.");
+        mostrarError("Por favor, completa todos los campos requeridos.");
     }
 });
 
@@ -79,55 +77,27 @@ function validarDatos(datos) {
 
 // Función para redirigir al usuario según sus respuestas
 function redirigirUsuario(datos) {
+    let url = '';
     if (datos.edad > 65) {
-        window.location.href = 'https://julischv.github.io/rutas/pages/adultosmayores.html'; 
+        url = 'pages/adultosmayores.html'; 
     } else if (datos.trabajaComputadora === "sí") {
-        window.location.href = 'https://julischv.github.io/rutas/pages/trabajoencasa.html'; 
+        url = 'pages/trabajoencasa.html'; 
     } else if (datos.realizaDeporte === "sí") {
-        window.location.href = 'https://julischv.github.io/rutas/pages/deportistas.html'; 
+        url = 'pages/deportistas.html'; 
     } else {
-        alert("No se ha seleccionado una opción válida para redirigir.");
+        mostrarError("No se ha seleccionado una opción válida para redirigir.");
+        return;
     }
+    window.location.href = url;
 }
 
-// Funciones para mostrar resultados
-function mostrarResultados(datos) {
-    const resultadosDiv = document.getElementById('resultados');
-    resultadosDiv.innerHTML = `
-        <h3>Resultados de la encuesta:</h3>
-        <p><strong>Nombre y Apellido:</strong> ${datos.nombreApellido}</p>
-        <p><strong>Edad:</strong> ${datos.edad}</p>
-        <p><strong>Correo electrónico:</strong> ${datos.email}</p>
-        <p><strong>Teléfono:</strong> ${datos.telefono}</p>
-        <p><strong>Dirección:</strong> ${datos.direccion}</p>
-        <p><strong>Realiza Deporte:</strong> ${datos.realizaDeporte}</p>
-        <p><strong>Trabaja con la Computadora:</strong> ${datos.trabajaComputadora}</p>
-        ${datos.trabajaComputadora === "sí" ? `<p><strong>Dolores cabeza/cervicales:</strong> ${datos.doloresComputadora}</p>` : ''}
-        <p><strong>Enfermedad Preexistente:</strong> ${datos.enfermedadPreexistente}</p>
-        ${datos.realizaDeporte === "sí" ? `
-            <p><strong>Deporte que práctica:</strong> ${datos.tipoDeporte}</p>
-            <p><strong>Frecuencia semanal:</strong> ${datos.frecuenciaDeporte}</p>
-            <p><strong>Lesiones por deporte:</strong> ${datos.lesionesDeporte}</p>
-        ` : ''}
-        <p><strong>Enfermedad Específica:</strong> ${datos.enfermedadEspecifica}</p>
-        <p><strong>Fecha de la encuesta:</strong> ${datos.fechaEncuesta}</p>
-        ${datos.edad > 65 ? `
-            <p><strong>Caídas recientes:</strong> ${datos.caidas}</p>
-            <p><strong>Número de caídas:</strong> ${datos.numeroCaidas}</p>
-            <p><strong>Problemas de equilibrio:</strong> ${datos.equilibrio}</p>
-        ` : ''}
-        <hr>
-        <h4>Total de encuestas almacenadas: ${encuestas.length}</h4>
-    `;
-}
-
-// Funciones para mostrar y ocultar errores
-function mostrarError(id) {
-    document.getElementById(id).classList.remove('hidden-field');
-}
-
-function ocultarError(id) {
-    document.getElementById(id).classList.add('hidden-field');
+// Funciones para mostrar errores
+function mostrarError(mensaje) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje,
+    });
 }
 
 // Maneja el cambio en los campos condicionales
@@ -157,4 +127,3 @@ window.addEventListener('load', function() {
     const resultadosDiv = document.getElementById('resultados');
     resultadosDiv.innerHTML = `<p>Encuestas registradas: ${encuestas.length}</p>`;
 });
-

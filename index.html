@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encuesta de Salud</title>
     <link rel="stylesheet" href="./css/style.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -15,28 +15,23 @@
                 <label for="nombreApellido">Nombre y Apellido:</label>
                 <input type="text" id="nombreApellido" required>
             </div>
-            
             <div class="form-group">
                 <label for="edad">Edad:</label>
                 <input type="number" id="edad" min="1" max="120" required>
             </div>
-            
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
                 <input type="email" id="email" required>
                 <div id="emailError" class="error hidden-field">Por favor ingrese un correo válido</div>
             </div>
-            
             <div class="form-group">
                 <label for="telefono">Teléfono:</label>
                 <input type="tel" id="telefono" required>
             </div>
-            
             <div class="form-group">
                 <label for="direccion">Dirección (opcional):</label>
                 <input type="text" id="direccion">
             </div>
-            
             <div class="form-group">
                 <label for="realizaDeporte">¿Realiza deporte regularmente?</label>
                 <select id="realizaDeporte" required>
@@ -45,7 +40,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            
             <div class="form-group">
                 <label for="trabajaComputadora">¿Trabaja con la computadora?</label>
                 <select id="trabajaComputadora" required>
@@ -54,7 +48,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            
             <div class="form-group">
                 <label for="enfermedadPreexistente">¿Tiene alguna enfermedad preexistente?</label>
                 <select id="enfermedadPreexistente" required>
@@ -63,12 +56,10 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            
             <div id="enfermedadEspecificaContainer" class="form-group">
                 <label for="enfermedadEspecifica">Especifique la enfermedad:</label>
                 <input type="text" id="enfermedadEspecifica">
             </div>
-
             <div id="computadoraDoloresContainer" class="form-group hidden-field">
                 <label>¿Ha tenido dolores de cabeza o cervicales en los últimos meses?</label>
                 <select id="doloresComputadora">
@@ -77,14 +68,11 @@
                     <option value="no">No</option>
                 </select>
             </div>
-
             <div id="deporteDetallesContainer" class="form-group hidden-field">
                 <label for="tipoDeporte">¿Qué deporte realiza?</label>
                 <input type="text" id="tipoDeporte">
-                
                 <label for="frecuenciaDeporte">¿Cuántas veces por semana?</label>
                 <input type="number" id="frecuenciaDeporte" min="1" max="7">
-                
                 <label>¿Ha tenido lesiones a repetición por ese deporte?</label>
                 <select id="lesionesDeporte">
                     <option value="">Seleccione una opción</option>
@@ -92,7 +80,6 @@
                     <option value="no">No</option>
                 </select>
             </div>
-
             <div id="mayor65Container" class="form-group hidden-field">
                 <label>¿Ha tenido caídas en los últimos meses?</label>
                 <select id="caidas">
@@ -100,10 +87,8 @@
                     <option value="sí">Sí</option>
                     <option value="no">No</option>
                 </select>
-                
                 <label for="numeroCaidas">¿Cuántas caídas?</label>
                 <input type="number" id="numeroCaidas" min="0">
-                
                 <label>¿Tiene desconfianza o falta de equilibrio al caminar?</label>
                 <select id="equilibrio">
                     <option value="">Seleccione una opción</option>
@@ -111,12 +96,11 @@
                     <option value="no">No</option>
                 </select>
             </div>
-            
             <button type="submit">Enviar Encuesta</button>
         </form>
-        
         <div id="resultados"></div>
     </div>
-<script src="./js/script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
+
